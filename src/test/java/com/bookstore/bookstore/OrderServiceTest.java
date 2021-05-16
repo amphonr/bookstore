@@ -1,5 +1,6 @@
 package com.bookstore.bookstore;
 
+import com.bookstore.bookstore.bo.CreateOrderBO;
 import com.bookstore.bookstore.repositories.OrderRepository;
 import com.bookstore.bookstore.services.OrderService;
 import org.junit.Assert;
@@ -29,16 +30,16 @@ public class OrderServiceTest {
 
     }
 
-    @Test
-    @Transactional
-    public void whenDeleteOrder_thenDeletingShouldBeSuccessful() {
-        try {
-            orderService.deleteByUsername("john.doe");
-            Assert.assertTrue(true);
-        }catch (Exception ex){
-            Assert.assertTrue(false);
-        }
-    }
+//    @Test
+//    @Transactional
+//    public void whenDeleteOrder_thenDeletingShouldBeSuccessful() {
+//        try {
+//            orderService.deleteByUsername("john.doe");
+//            Assert.assertTrue(true);
+//        }catch (Exception ex){
+//            Assert.assertTrue(false);
+//        }
+//    }
 
     @Test
     @Transactional
