@@ -2,9 +2,7 @@ package com.bookstore.bookstore.entities;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="orders")
@@ -15,6 +13,7 @@ import javax.persistence.Table;
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
 public class Order {
     @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
     private String username;
     private Integer bookId;

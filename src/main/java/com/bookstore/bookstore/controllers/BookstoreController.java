@@ -1,9 +1,11 @@
 package com.bookstore.bookstore.controllers;
 
+import com.bookstore.bookstore.bo.CreateOrderBO;
 import com.bookstore.bookstore.bo.CreateUserBO;
 import com.bookstore.bookstore.bo.LoginBO;
 import com.bookstore.bookstore.bo.UserBO;
 import com.bookstore.bookstore.services.BookService;
+import com.bookstore.bookstore.services.OrderService;
 import com.bookstore.bookstore.services.UserLoginService;
 import com.bookstore.bookstore.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,14 +19,17 @@ public class BookstoreController {
     private UserLoginService userLoginService;
     private UserService userService;
     private BookService bookService;
+    private OrderService orderService;
 
     @Autowired
     public BookstoreController(UserLoginService userLoginService,
                                UserService userService,
-                               BookService bookService){
+                               BookService bookService,
+                               OrderService orderService){
         this.userLoginService = userLoginService;
         this.userService = userService;
         this.bookService = bookService;
+        this.orderService = orderService;
     }
 
     @PostMapping("/login")
@@ -48,6 +53,12 @@ public class BookstoreController {
     public ResponseEntity createUser(@RequestBody CreateUserBO request)throws Exception{
         this.userService.createUser(request);
         return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/users/orders")
+    public ResponseEntity createOrders(@RequestBody CreateOrderBO request)throws Exception{
+        CreateOrderBO orderCreated = this.orderService.createOrder(request);
+        return ResponseEntity.ok(orderCreated);
     }
 
     @GetMapping("/books")

@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class BookServiceImpl implements BookService {
@@ -20,7 +20,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public List<BookBO> listBook() {
-       List<BookIntfModel> bookList = bookClient.listBook();
+       HashSet<BookIntfModel> bookList = bookClient.listBook();
        List<BookIntfModel> recommendationList = bookClient.listRecommendation();
        List<BookBO> listBookResponse = new ArrayList<>();
 
