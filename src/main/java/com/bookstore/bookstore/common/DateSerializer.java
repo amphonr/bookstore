@@ -20,7 +20,7 @@ public class DateSerializer extends StdSerializer<Date> {
 
   public DateSerializer(Class t) {
     super(t);
-    this.formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+    this.formatter = new SimpleDateFormat("dd/MM/yyyy", Locale.US);
   }
 
   public void serialize(Date value, JsonGenerator gen, SerializerProvider provider) throws IOException {
