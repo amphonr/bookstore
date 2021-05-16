@@ -1,5 +1,6 @@
 package com.bookstore.bookstore.controllers;
 
+import com.bookstore.bookstore.bo.CreateUserBO;
 import com.bookstore.bookstore.bo.LoginBO;
 import com.bookstore.bookstore.bo.UserBO;
 import com.bookstore.bookstore.services.BookService;
@@ -40,6 +41,12 @@ public class BookstoreController {
     @DeleteMapping("/users")
     public ResponseEntity deleteUser() throws Exception{
         this.userService.deleteUser();
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/users")
+    public ResponseEntity createUser(@RequestBody CreateUserBO request)throws Exception{
+        this.userService.createUser(request);
         return ResponseEntity.ok().build();
     }
 

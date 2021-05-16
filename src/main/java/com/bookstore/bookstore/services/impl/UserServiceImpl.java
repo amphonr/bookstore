@@ -1,5 +1,6 @@
 package com.bookstore.bookstore.services.impl;
 
+import com.bookstore.bookstore.bo.CreateUserBO;
 import com.bookstore.bookstore.bo.LoginBO;
 import com.bookstore.bookstore.bo.OrderBO;
 import com.bookstore.bookstore.bo.UserBO;
@@ -54,5 +55,17 @@ public class UserServiceImpl implements UserService {
         LoginBO userLogin = userLoginService.getUserLogin();
         orderService.deleteByUsername(userLogin.getUsername());
         userRepository.deleteById(userLogin.getUsername());
+    }
+
+    @Override
+    public void createUser(CreateUserBO request) throws Exception {
+        Users user = Users.builder()
+                .username(request.getUsername())
+                .password(request.getPassword())
+                .name(request.getName())
+                .surname(request.getSurname())
+                .dateOfBirth(request.getDateOfBirth())
+                .build();
+        userRepository.save(user);
     }
 }
