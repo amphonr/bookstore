@@ -28,7 +28,7 @@ public class UserLoginImpl implements UserLoginService {
                     .username(login.getUsername())
                     .password(login.getPassword())
                     .userInfo(UserBO.builder()
-                            .surname(login.getName())
+                            .surname(login.getSurname())
                             .name(login.getName())
                             .dateOfBirth(login.getDateOfBirth())
                             .build())
