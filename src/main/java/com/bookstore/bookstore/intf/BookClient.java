@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
 
-@FeignClient(name = "books", url = "https://scb-test-book-publisher.herokuapp.com")
+@FeignClient(name = "books", url = "${scbTestBook-service.baseURL}")
 public interface BookClient {
-    @RequestMapping(method = RequestMethod.GET, value = "/books")
+    @RequestMapping(method = RequestMethod.GET, value = "${scbTestBook-service.books}")
     List<Book> listBook();
 }
