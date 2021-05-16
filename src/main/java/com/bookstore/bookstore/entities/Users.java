@@ -20,7 +20,8 @@ import java.sql.Date;
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
 public class Users {
     @Id
-    private Integer id;
+    private String username;
+    private String password;
     private String name;
     private String surname;
 

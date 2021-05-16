@@ -32,24 +32,16 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserBO getUser() throws Exception{
         LoginBO userLogin = userLoginService.getUserLogin();
-        Optional<Users> rs = userRepository.findById(userLogin.getUserId());
-
-        if(rs.isPresent()){
-            Users user = rs.get();
-            UserBO userBO = UserBO.builder()
-                    .name(user.getName())
-                    .surname(user.getSurname())
-                    .dateOfBirth(user.getDateOfBirth())
-                    .build();
+        if(null != userLogin){
+            UserBO userBO = userLogin.getUserInfo();
             try {
-                List<OrderBO> list = orderService.listOrder(user.getId());
+                List<OrderBO> list = orderService.findByUsername(userLogin.getUsername());
                 for(OrderBO order: list){
                     userBO.addBooks(order.getBookId());
                 }
             }catch (ExceptionDataNotFound orderNotFound){
                 log.info(orderNotFound.getMessage());
             }
-
             return userBO;
         }
         throw new ExceptionDataNotFound("user", "");

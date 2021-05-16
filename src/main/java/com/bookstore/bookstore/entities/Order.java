@@ -16,6 +16,6 @@ import javax.persistence.Table;
 public class Order {
     @Id
     private Integer id;
-    private Integer userId;
+    private String username;
     private Integer bookId;
 }

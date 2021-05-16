@@ -31,20 +31,15 @@ public class BookstoreController {
         this.userLoginService.login(request);
     }
 
-    @GetMapping("/userLogin")
-    public ResponseEntity<?> getUserLogin() throws Exception{
-        LoginBO userLogin = this.userLoginService.getUserLogin();
-        return ResponseEntity.ok(userLogin);
-    }
-
     @GetMapping("/users")
-    public ResponseEntity listAllUsers() throws Exception{
+    public ResponseEntity getUser() throws Exception{
         UserBO users = this.userService.getUser();
         return ResponseEntity.ok(users);
     }
 
+
     @GetMapping("/books")
-    public ResponseEntity listAllBook(){
+    public ResponseEntity listBook(){
         List list = this.bookService.listBook();
         return ResponseEntity.ok(list);
     }

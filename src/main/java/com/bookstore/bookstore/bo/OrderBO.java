@@ -13,6 +13,6 @@ import javax.persistence.Table;
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
 public class OrderBO {
     private Integer id;
-    private Integer userId;
+    private String username;
     private Integer bookId;
 }

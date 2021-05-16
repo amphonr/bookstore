@@ -17,19 +17,19 @@ public class OrderServiceImpl implements OrderService {
     private OrderRepository orderRepository;
 
     @Override
-    public List<OrderBO> listOrder(final Integer userId) throws Exception {
-        List<Order> rs = orderRepository.findByUserId(userId);
+    public List<OrderBO> findByUsername(final String username) throws Exception {
+        List<Order> rs = orderRepository.findByUsername(username);
         if(rs != null && rs.size()>0){
             List<OrderBO> orderListBO = new ArrayList<>();
             for(Order oder: rs){
                 orderListBO.add(OrderBO.builder()
                         .id(oder.getId())
                         .bookId(oder.getBookId())
-                        .userId(oder.getUserId())
+                        .username(oder.getUsername())
                         .build());
             }
             return orderListBO;
         }
-        throw new ExceptionDataNotFound("search order by userId",userId);
+        throw new ExceptionDataNotFound("search order by userId",username);
     }
 }
