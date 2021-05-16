@@ -32,4 +32,16 @@ public class OrderServiceImpl implements OrderService {
         }
         throw new ExceptionDataNotFound("search order by userId",username);
     }
+
+    @Override
+    public void deleteByUsername(String username) throws Exception{
+        try {
+            Long result = orderRepository.deleteByUsername(username);
+            if(result<=0){
+                throw new Exception("delete order by username : data not found");
+            }
+        }catch (Exception ex){
+            throw new Exception("delete order by username Error :"+ex.getMessage());
+        }
+    }
 }

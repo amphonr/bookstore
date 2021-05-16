@@ -37,6 +37,11 @@ public class BookstoreController {
         return ResponseEntity.ok(users);
     }
 
+    @DeleteMapping("/users")
+    public ResponseEntity deleteUser() throws Exception{
+        this.userService.deleteUser();
+        return ResponseEntity.ok().build();
+    }
 
     @GetMapping("/books")
     public ResponseEntity listBook(){

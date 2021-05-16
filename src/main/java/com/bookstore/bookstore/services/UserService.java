@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface UserService {
     public UserBO getUser() throws Exception;
+    public void deleteUser() throws Exception;
 }
